@@ -1,0 +1,28 @@
+
+<%= simple_form_for [@restaurant,@review] do |f| %>
+
+            <% if @review.errors.any? %>
+              <!-- <div class="errors-container"> -->
+              <ul>
+                <% @review.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+              </ul>
+              <!-- </div> -->
+              <% end %>
+        <%= f.input :content %>
+        <%= f.input :rating, inclusion:{in: [0, 1, 2, 3, 4, 5]}%>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+
+<%= link_to "Back to restaurant list", restaurants_path %>
+<!-- t.text "content"
+    t.integer "rating"
+    t.integer "restaurant_id" -->
+<!-- validates :rating, inclusion: { in: [0, 1, 2, 3, 4, 5] } -->
+
+<!-- # app/views/reviews/new.html.erb
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %> -->
